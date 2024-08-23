@@ -54,10 +54,10 @@ async def build_index(
         resolve_timestamp_path(config.storage.base_dir, run_id)
         resume = True
     except ValueError as _:
-        resume = False
+        resume = True
     pipeline_config = create_pipeline_config(config)
     pipeline_cache = (
-        NoopPipelineCache() if config.cache.type == CacheType.none is None else None
+        NoopPipelineCache() if config.cache.type == CacheType.none else None
     )
     outputs: list[PipelineRunResult] = []
     async for output in run_pipeline_with_config(
@@ -70,10 +70,10 @@ async def build_index(
         is_resume_run=resume,
     ):
         outputs.append(output)
-        if progress_reporter:
+        if progress_reporter is not None:
             if output.errors and len(output.errors) > 0:
                 progress_reporter.error(output.workflow)
             else:
                 progress_reporter.success(output.workflow)
-            progress_reporter.info(str(output.result))
+            progress_reporter.info(str(output))
     return outputs
