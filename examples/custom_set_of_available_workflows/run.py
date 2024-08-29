@@ -12,11 +12,11 @@ from graphrag.index import run_pipeline, run_pipeline_with_config
 from graphrag.index.config import PipelineWorkflowReference
 
 sample_data_dir = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "../_sample_data/"
+    sample_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../_sample_data/')"../_sample_data/"
 )
 
 # our fake dataset
-dataset = pd.DataFrame([{"col1": 2, "col2": 4}, {"col1": 5, "col2": 10}])
+dataset = pd.DataFrame([{'col1': 2, 'col2': 4}, {'col1': 5, 'col2': 10}])"col1": 2, "col2": 4}, {"col1": 5, "col2": 10}])
 
 
 async def run_with_config():
@@ -36,7 +36,7 @@ async def run_with_config():
         tables.append(table)
     pipeline_result = tables[-1]
 
-    if pipeline_result.result is not None:
+    if pipeline_result and pipeline_result.result is not None:
         # Should look something like this:
         #    col1  col2  col_1_multiplied
         # 0     2     4                 8
@@ -70,7 +70,7 @@ async def run_python():
         tables.append(table)
     pipeline_result = tables[-1]
 
-    if pipeline_result.result is not None:
+    if pipeline_result and pipeline_result.result is not None:
         # Should look something like this:
         #    col1  col2  col_1_multiplied
         # 0     2     4                 8
