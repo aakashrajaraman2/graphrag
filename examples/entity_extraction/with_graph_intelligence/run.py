@@ -32,8 +32,8 @@ async def run_with_config():
     dataset = shared_dataset.head(10)
 
     # load pipeline.yml in this directory
-    config_path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "./pipeline.yml"
+    config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pipeline.yml')
+        os.path.dirname(os.path.abspath(__file__)),
     )
 
     # Grab the last result from the pipeline, should be our entity extraction
