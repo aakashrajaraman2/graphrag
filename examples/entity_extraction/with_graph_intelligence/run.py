@@ -32,8 +32,8 @@ async def run_with_config():
     dataset = shared_dataset.head(10)
 
     # load pipeline.yml in this directory
-    config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pipeline.yml')
-        os.path.dirname(os.path.abspath(__file__)),
+    config_path = os.path.join(
+config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pipeline.yml')
     )
 
     # Grab the last result from the pipeline, should be our entity extraction
@@ -108,4 +108,4 @@ async def run_python():
 
 if __name__ == "__main__":
     asyncio.run(run_python())
-    asyncio.run(run_with_config())
+    asyncio.run(run_with_config)
