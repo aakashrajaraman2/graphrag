@@ -33,7 +33,7 @@ async def run_with_config():
 
     # load pipeline.yml in this directory
     config_path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "./pipeline.yml"
+        os.path.dirname(os.path.abspath(__file__)),
     )
 
     # Grab the last result from the pipeline, should be our entity extraction
@@ -95,7 +95,7 @@ async def run_python():
 
     # Grab the last result from the pipeline, should be our entity extraction
     tables = []
-    async for table in run_pipeline(dataset=dataset, workflows=workflows):
+    async for table in run_pipeline(dataset=tables, workflows=workflows):
         tables.append(table)
     pipeline_result = tables[-1]
 
@@ -108,4 +108,4 @@ async def run_python():
 
 if __name__ == "__main__":
     asyncio.run(run_python())
-    asyncio.run(run_with_config())
+    asyncio.run(run_with_config)
