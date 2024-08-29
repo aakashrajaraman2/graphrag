@@ -21,7 +21,6 @@ custom_workflows: WorkflowDefinitions = {
                 "operator": "*",
             },
         }
-    ],
     "my_unused_workflow": lambda _config: [
         {
             "verb": "derive",
