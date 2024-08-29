@@ -11,7 +11,7 @@ def str_append(
     # just as long as the "args" in the workflow reference match the function signature
     input_data = input.get_input()
     output_df = input_data.copy()
-    output_df[target_column] = output_df[source_column].apply(
+    output_df[target_column] = output_df[source_column].astype(str).apply(        lambda x: f'{x}{string_to_append}'    )
         lambda x: f"{x}{string_to_append}"
     )
     return TableContainer(table=output_df)
