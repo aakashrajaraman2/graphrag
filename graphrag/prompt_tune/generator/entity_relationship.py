@@ -1,3 +1,6 @@
+# Copyright (c) 2024 Microsoft Corporation.
+# Licensed under the MIT License
+
 """Entity relationship example generation module."""
 
 import asyncio
@@ -27,8 +30,6 @@ async def generate_entity_relationship_examples(
     on the json_mode parameter.
     """
     docs_list = [docs] if isinstance(docs, str) else docs
-    
-   
     history = [{"role": "system", "content": persona}]
 
     if entity_types:
@@ -52,12 +53,11 @@ async def generate_entity_relationship_examples(
             for doc in docs_list
         ]
 
-    
     messages = messages[:MAX_EXAMPLES]
 
     tasks = [llm(message, history=history, json=json_mode) for message in messages]
 
-    responses = asyncio.gather(*tasks)
+    responses = await asyncio.gather(*tasks)
 
     return [
         json.dumps(response.json or "") if json_mode else str(response.output)
