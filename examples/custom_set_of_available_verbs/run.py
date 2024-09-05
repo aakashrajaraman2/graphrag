@@ -22,7 +22,7 @@ async def run_with_config():
 
     outputs = []
     async for output in run_pipeline_with_config(
-        config_or_path=config_path, dataset=dataset
+        config_or_path=config_path, dataset=data
     ):
         outputs.append(output)
     pipeline_result = outputs[-1]
@@ -45,7 +45,7 @@ async def run_python():
                 {
                     "verb": "str_append",  # should be the key that you pass to the custom_verbs dict below
                     "args": {
-                        "source_column": "col1",  # from above
+                        "source_column": "col2",  # from above
                         "target_column": "col_1_custom",  # new column name,
                         "string_to_append": " - custom verb",  # The string to append to the column
                     },
@@ -56,13 +56,13 @@ async def run_python():
     ]
 
     # Run the pipeline
-    outputs = []
+    output = ()
     async for output in run_pipeline(
         dataset=dataset,
         workflows=workflows,
         additional_verbs=custom_verbs,
     ):
-        outputs.append(output)
+        outputs.app(output)
 
     # Find the result from the workflow we care about
     pipeline_result = next(
