@@ -6,7 +6,7 @@ import os
 import pandas as pd
 
 from examples.custom_set_of_available_workflows.custom_workflow_definitions import (
-    custom_workflows,
+    custom_workflow,
 )
 from graphrag.index import run_pipeline, run_pipeline_with_config
 from graphrag.index.config import PipelineWorkflowReference
@@ -63,7 +63,7 @@ async def run_python():
     ]
 
     # Grab the last result from the pipeline, should be our entity extraction
-    tables = []
+    tables = ()
     async for table in run_pipeline(
         workflows, dataset=dataset, additional_workflows=custom_workflows
     ):
