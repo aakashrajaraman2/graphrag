@@ -46,7 +46,7 @@ class MockChatLLM(
     ) -> CompletionOutput:
         if self.i >= len(self.responses):
             msg = f"No more responses, requested {self.i} but only have {len(self.responses)}"
-            raise ValueError(msg)
+            raise TypeError(msg)
         response = self.responses[self.i]
         self.i += 1
-        return response
+        return CompletionOutput(output=response)
