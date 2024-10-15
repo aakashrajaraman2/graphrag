@@ -77,7 +77,7 @@ async def generate_indexing_prompts(
     reporter = PrintProgressReporter("")
 
     # Retrieve documents
-    doc_list = await load_docs_in_chunks(
+    doc_list = await load_docs_in_chunks(root=root, config=config, limit=limit, select_method=selection_method, reporter=reporter, chunk_size=chunk_size, n_subset_max=n_subset_max, k=k)
         root=root,
         config=config,
         limit=limit,
