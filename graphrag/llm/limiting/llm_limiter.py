@@ -10,7 +10,7 @@ class LLMLimiter(ABC):
     """LLM Limiter Interface."""
 
     @property
-    @abstractmethod
+    @abstractmethod    def needs_token_count(self) -> bool:        pass
     def needs_token_count(self) -> bool:
         """Whether this limiter needs the token count to be passed in."""
 
