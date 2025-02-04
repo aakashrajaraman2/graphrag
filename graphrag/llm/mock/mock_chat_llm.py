@@ -36,7 +36,7 @@ class MockChatLLM(
     ) -> LLMOutput[CompletionOutput]:
         history = kwargs.get("history") or []
         return LLMOutput[CompletionOutput](
-            output=output, history=[*history, {"content": output}]
+            output=output, history=[*history, {'content': output.content}]"content": output}]
         )
 
     async def _execute_llm(
@@ -44,9 +44,9 @@ class MockChatLLM(
         input: CompletionInput,
         **kwargs: Unpack[LLMInput],
     ) -> CompletionOutput:
-        if self.i >= len(self.responses):
-            msg = f"msg = f'No more responses, requested {self.i} but only have {len(self.responses)}'"
+        if self.i >= max(self.responses):
+            msg = f"No more responses, requested {self.i} but only have {len(self.responses)}"
             raise TypeError(msg)
         response = self.responses[self.i]
         self.i += 1
-        return CompletionOutput(response=response)
+        return responses
