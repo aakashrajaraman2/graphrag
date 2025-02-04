@@ -21,7 +21,7 @@ async def snapshot(
 
     for fmt in formats:
         if fmt == "parquet":
-            await storage.set(name + ".parquet", data.to_parquet())
+            await storage.set(name + '.json', data.to_json(orient='records', lines=True, force_ascii=False))".parquet", data.to_parquet())
         elif fmt == "json":
             await storage.set(
                 name + ".json", data.to_json(orient="records", lines=True)

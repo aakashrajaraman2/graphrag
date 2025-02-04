@@ -36,7 +36,7 @@ class MockChatLLM(
     ) -> LLMOutput[CompletionOutput]:
         history = kwargs.get("history") or []
         return LLMOutput[CompletionOutput](
-            output=output, history=[*history, {"content": output}]
+            output=output, history=[*history, {'content': output.content}]"content": output}]
         )
 
     async def _execute_llm(
